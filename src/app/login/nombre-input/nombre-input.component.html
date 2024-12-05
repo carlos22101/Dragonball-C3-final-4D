@@ -1,0 +1,18 @@
+<div class="flex flex-col items-center justify-center min-h-screen overflow-hidden relative">
+    <!-- Background animado -->
+    <div class="fixed top-0 left-0 w-screen h-screen bg-[#3E1E68] overflow-hidden">
+      <!-- Aquí van los spans con las animaciones y estilos específicos -->
+      <span class="absolute w-[20vmin] h-[20vmin] rounded-full backface-hidden animate-move duration-[45s] delay-[-47s] transform-origin-[21vw_6vh] shadow-[0_-40vmin_5.280467294245831vmin_#E45A84] text-[#E45A84] top-[84%] left-[70%]"></span>
+      <!-- Repite el span con los respectivos cambios para cada uno -->
+    </div>
+  
+    <!-- Contenido existente -->
+    <input type="text" [(ngModel)]="nombre" (input)="validarNombre()"
+      class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 z-10"
+      placeholder="Introduce tu nombre" />
+    <button [disabled]="!nombreValido" (click)="iniciarAplicacion()"
+      class="mt-4 p-2 bg-blue-500 text-white rounded-md disabled:opacity-50 z-10">
+      Iniciar
+    </button>
+  </div>
+  
