@@ -1,0 +1,19 @@
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    margin-top: 1rem;
+  }
+  
+  .carousel {
+    display: flex;
+    gap: 1rem;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .carousel-item {
+    flex: 0 0 auto;
+    text-align: center;
+  }
+  
