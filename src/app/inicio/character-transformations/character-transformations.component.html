@@ -1,0 +1,30 @@
+<div class="container mx-auto mt-8 text-white">
+    <button (click)="Regresar()" class="text-blue-950 text-3xl">Dashboard</button>
+    <h1 class="text-3xl font-bold mb-4">{{ characterName }} - Transformaciones</h1>
+  
+    <div *ngIf="transformations.length > 0; else noTransformations" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div *ngFor="let transformation of transformations" class="bg-gray-800 p-4 rounded-lg shadow-md">
+        <img [src]="transformation.image" alt="{{ transformation.name }}" class="w-full h-48 object-contain rounded-md mb-2">
+        <h2 class="text-xl font-bold">{{ transformation.name }}</h2>
+        
+        <!-- Mostrar el Ki o el input editable -->
+        <div *ngIf="!transformation.editing; else editKi">
+          <p>Ki: {{ transformation.ki }}</p>
+          <button (click)="enableEdit(transformation)" class="text-blue-500 underline">Editar Ki</button>
+        </div>
+        <ng-template #editKi>
+          <input
+            type="number"
+            [(ngModel)]="transformation.ki"
+            class="bg-gray-700 p-2 rounded w-full mb-2 text-black"
+          />
+          <button (click)="saveKi(transformation, transformation.ki)" class="bg-blue-500 text-white px-4 py-1 rounded">Guardar</button>
+        </ng-template>
+      </div>
+    </div>
+  
+    <ng-template #noTransformations>
+      <p class="text-center text-gray-400">No hay transformaciones disponibles para este personaje.</p>
+    </ng-template>
+  </div>
+  
