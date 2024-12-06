@@ -4,12 +4,14 @@ import { InicioRoutingModule } from './inicio-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CharacterTransformationsComponent } from './character-transformations/character-transformations.component';
 import { FormsModule } from '@angular/forms';
+import { PlanetModalComponent } from './planet-modal/planet-modal.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    CharacterTransformationsComponent
+    CharacterTransformationsComponent,
+    PlanetModalComponent
   ],
   imports: [
     CommonModule,
