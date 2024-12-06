@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../servicios/api.service';
-import { Character } from '../../models/character';
+import { Character, Planet } from '../../models/character';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,6 +10,7 @@ import { Character } from '../../models/character';
 export class DashboardComponent implements OnInit {
   characters: Character[] = []; // Debe ser un array
   selectedTransformations: any[] = [];
+  selectedPlanet: Planet | null = null; // Planeta seleccionado
 
   constructor(private apiService: ApiService) { }
 
@@ -33,6 +34,26 @@ export class DashboardComponent implements OnInit {
       },
       error: (error) => console.error('Error loading transformations:', error)
     });
+  }
+
+  viewPlanet(characterId: number): void {
+    // Obtener los detalles del personaje por su ID
+    this.apiService.getCharacterById(characterId.toString()).subscribe({
+      next: (character) => {
+        if (character.originPlanet) {
+          this.selectedPlanet = character.originPlanet; // Asignar el planeta
+        } else {
+          console.error('Este personaje no tiene un planeta asignado.');
+        }
+      },
+      error: (error) => {
+        console.error('Error al cargar los detalles del personaje:', error);
+      }
+    });
+  }
+
+  closePlanetModal(): void {
+    this.selectedPlanet = null; // Limpia el modal al cerrar
   }
 
 }

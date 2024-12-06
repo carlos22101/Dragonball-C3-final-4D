@@ -4,7 +4,7 @@
         <img [src]="character.image" alt="Image of {{ character.name }}" class="w-24 h-24 rounded-full">
         <div>
           <h2 class="text-xl font-bold">{{ character.name }}</h2>
-          <p>{{ character.description }}</p>
+          <p class="text-justify">{{ character.description }}</p>
           <ul>
             <li>Ki: {{ character.ki }}</li>
             <li>Max Ki: {{ character.maxKi }}</li>
@@ -18,8 +18,17 @@
             class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
             Transformaciones
           </button>
+          <button
+          (click)="viewPlanet(character.id)"
+          class="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700">
+          Ver Planeta
+          </button>
         </div>
       </div>
     </div>
+    <app-planet-modal
+    *ngIf="selectedPlanet"
+    [planet]="selectedPlanet"
+    (closeModal)="closePlanetModal()">
+  </app-planet-modal>
   </div>
-  
