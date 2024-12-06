@@ -46,11 +46,11 @@ export class CharacterTransformationsComponent {
 
   // Guardar el nuevo valor de Ki
   saveKi(transformation: any, newKi: string): void {
-    const kiValue = parseInt(newKi, 10);
-    if (!isNaN(kiValue)) {
-      transformation.ki = kiValue;
-      localStorage.setItem(`ki-${transformation.id}`, kiValue.toString());
+    if (newKi.trim() !== '') {
+      transformation.ki = newKi; // Guarda el valor como texto
+      localStorage.setItem(`ki-${transformation.id}`, newKi);
     }
     transformation.editing = false; // Salir del modo edición
   }
+
 }
